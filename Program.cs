@@ -13,6 +13,16 @@ namespace InterfacesDemo
 
             Console.WriteLine($"{zCar.ToString()} is not equal to a {vette.ToString()}: " + zCar.Equals(vette));
             Console.WriteLine($"{zCar.ToString()} is equal to a {zCar2.ToString()}: " + zCar.Equals(zCar2));
+
+            Console.WriteLine("\n");
+
+            Console.WriteLine("Testing Monsters");
+            Monster sully = new Monster("Sully", 17);
+            Monster mike = new Monster("Mike Wizowski", 15);
+            Monster randall = new Monster("Randall", 17);
+
+            Console.WriteLine($"{sully} is not equal to {mike}: " + sully.Equals(mike));
+            Console.WriteLine($"{sully} is equal to {randall}: " + sully.Equals(randall));
         }
     }
 }
