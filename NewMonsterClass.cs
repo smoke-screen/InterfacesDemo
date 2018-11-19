@@ -2,101 +2,53 @@
  
 namespace InterfacesDemo
 {
-    public class Monster : IEquatable<Monster>
+    interface IAttacker
     {
-        public int Health;
-        private int Armor;
-        private int Level;
-        public string Name;
-        public int Strength;
-        public Monster(string name, int level)
-        {
-            this.Name = name;
-            this.Level = level;
-        }
-
-        public bool Equals(Monster other)
-        {
-            return this.Level == other.Level;
-        }
-
-        override public string ToString()
-        {
-            return this.Name;
-        }
-    }
-
-    interface IAttacker<Monster>
-    {
-        public int Attack(Monster obj)
-        {
-            int damage = obj.Strength;
-            return damage;
-        }
-
-        public void TakeDamage(int damage, Monster obj)
-        {
-            int damageDealt = damage - obj.armor;
-            obj.Health = obj.Health - damageDealt;
-        }
-        public void Battle(obj Attacker, obj Defender)
-        {
-            int damageDealt = Attack(Attacker);
-            TakeDamage(damageDealt, Defender);
-            damageDealt = Attack(Defender);
-            TakeDamage(damageDealt, Attacker);
-        }
+       double Attack(double armor);
+       void TakeDamage(double attack);
     }
     public class Elf : Monster, IAttacker
     {
-        public Elf()
+        double Strength;
+        public Elf(string name, int level) : base(name, level)
         {
-            this.Health = 0.8 * Level;
-            this.Armor = 3;
+            this.Health = 3 * level;
+            this.Armor = 10;
             this.Strength = 10;
+        }
+       public double Attack(double armor)
+        {
+            double damage = this.Strength;
+            return damage;
+        }
+
+       public void TakeDamage(double attack)
+        {
+            double damageDealt = attack - this.Armor;
+            this.Health = this.Health - damageDealt;
         }
     }
 
     public class Orc : Monster, IAttacker
     {
-        public Orc()
+        double Strength;
+        public Orc(string name, int level): base (name,level)
         {
-            this.Health = 1.5 * Level;
-            this.Armor = 7;
-            this.Strength = 5;
+            this.Health = 2 * level;
+            this.Armor = 8;
+            this.Strength = 8;
         }
-    }
-    class Program
-    {
-
-        static void Main()
+   public double Attack(double armor)
         {
-            Elf Elf = new Elf();
-            Orc Orc = new Orc();
-            Console.WriteLine("The Orc's Health:" + Orc.Health.ToString());
-            Console.WriteLine("The Elf's Health:" + Elf.Health.ToString());
-
-            for (Orc.Health && Elf.Health; Orc.Health && Elf.Health > 0; IAttacker<>.Battle())
-            {
-                Console.WriteLine("The Orc's Health:" + Orc.Health.ToString());
-                Console.WriteLine("The Elf's Health:" + Elf.Health.ToString());
-            }
-
-            if (Orc.Health < 0)
-            {
-                Console.WriteLine("The Elf wins!");
-            }
-
-            else if (Elf.Health < 0)
-            {
-                Console.WriteLine("The Orc wins!");
-            }
-            else
-            {
-                Console.WriteLine("error");
-            }
+            double damage = this.Strength;
+            return damage;
         }
 
+    public void TakeDamage(double attack)
+        {
+            double damageDealt = attack - this.Armor;
+            this.Health = this.Health - damageDealt;
+        }
     }
 
 }

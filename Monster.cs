@@ -4,7 +4,10 @@ namespace InterfacesDemo
     {
         private int Level;
         public string Name;
-        public Monster(string name, int level){
+        public double Health;
+        public double Armor;
+        public Monster(string name, int level)
+        {
             this.Name = name;
             this.Level = level;
         }

@@ -4,25 +4,41 @@ namespace InterfacesDemo
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Testing Cars");
-            Car zCar = new Car("Datsun", "280Z", "1978");
-            Car vette = new Car("Chevrolet", "Corvette", "2019");
-            Car zCar2 = new Car("Datsun", "280Z", "1978");
+            Elf legolas = new Elf("legolas",10);
+            Orc ugluk = new Orc("ugluk",8);
+            Console.WriteLine("The Orc's Health:" + ugluk.Health.ToString());
+            Console.WriteLine("The Elf's Health:" + legolas.Health.ToString());
 
-            Console.WriteLine($"{zCar.ToString()} is not equal to a {vette.ToString()}: " + zCar.Equals(vette));
-            Console.WriteLine($"{zCar.ToString()} is equal to a {zCar2.ToString()}: " + zCar.Equals(zCar2));
+            /*for (ugluk.Health && legolas.Health; ugluk.Health && legolas.Health > 0; IAttacker<>.Battle())
+            {
+                Console.WriteLine("The ugluk's Health:" + Orc.Health.ToString());
+                Console.WriteLine("The legolas's Health:" + Elf.Health.ToString());
+            }*/
 
-            Console.WriteLine("\n");
+            while(legolas.Health > 0 && ugluk.Health > 0)
+            {
+                ugluk.TakeDamage(legolas.Attack(ugluk.Armor));
+                legolas.TakeDamage(ugluk.Attack(legolas.Armor));
+                Console.WriteLine("The Orc's Health:" + ugluk.Health.ToString());
+                Console.WriteLine("The Elf's Health:" + legolas.Health.ToString());
 
-            Console.WriteLine("Testing Monsters");
-            Monster sully = new Monster("Sully", 17);
-            Monster mike = new Monster("Mike Wizowski", 15);
-            Monster randall = new Monster("Randall", 17);
+            }
 
-            Console.WriteLine($"{sully} is not equal to {mike}: " + sully.Equals(mike));
-            Console.WriteLine($"{sully} is equal to {randall}: " + sully.Equals(randall));
+            if (ugluk.Health < 0)
+            {
+                Console.WriteLine("legolas wins!");
+            }
+
+            else if (legolas.Health < 0)
+            {
+                Console.WriteLine("ugluk wins!");
+            }
+            else
+            {
+                Console.WriteLine("error");
+            }
         }
     }
 }
